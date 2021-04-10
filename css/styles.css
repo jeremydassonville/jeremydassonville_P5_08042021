@@ -1,0 +1,15 @@
+/* menu de navigation */
+
+.nav-bg {
+    background-color: #F2E8F0;
+}
+
+/* Section cards */
+
+@media screen and (min-width: 992px) {
+    #listeProduit img {
+        height: 250px;
+        object-fit: cover;
+        
+    }
+}
