@@ -1,7 +1,23 @@
+/* Page général */
+h2, h3 {
+    font-family: 'New Tegomin', serif;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif; ;
+}
+
 /* menu de navigation */
 
 .nav-bg {
     background-color: #F2E8F0;
+}
+
+/* Titre de la section cards */
+
+.box-title h2 {
+    text-align: center;
+    margin-top: 30px;
 }
 
 /* Section cards */
