@@ -28,6 +28,10 @@ p {
         object-fit: cover;
         
     }
+
+    #productDescription img {
+        width: 50%;
+    }
 }
 
 /* Liens de la page */
