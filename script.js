@@ -1,7 +1,7 @@
 /* Fonction qui récupère les données de l'API */
 
 function getData () {
-  return fetch('https://ab-p5-api.herokuapp.com/api/cameras')
+  return fetch('https://ab-p5-api.herokuapp.com/api/cameras' + idCameras)
     .then(function (response) {
       return response.json()
   })
@@ -10,7 +10,7 @@ function getData () {
   })
 }
 
-/* Fonction qui afficher les données de l'API */
+/* Fonction qui affiche les données de l'API sur la page d'acceuil */
 
 function displayData(myData) {
   let displayProduct = document.getElementById('listeProduit')
@@ -22,6 +22,7 @@ function displayData(myData) {
        /* Ajout de la structure HTML  */
        
     const productColumn = document.createElement('div')
+    const productLink = document.createElement('a')
     const productContenant = document.createElement('div')
     const productImage = document.createElement('img')
     const productBody = document.createElement('div')
@@ -31,7 +32,8 @@ function displayData(myData) {
         /* Ajout des éléments sur la page */
 
     displayProduct.appendChild(productColumn)
-    productColumn.appendChild(productContenant)
+    productColumn.appendChild(productLink)
+    productLink.appendChild(productContenant)
     productContenant.appendChild(productImage)
     productContenant.appendChild(productBody)
     productBody.appendChild(productName)
@@ -40,6 +42,7 @@ function displayData(myData) {
         /* Ajout des valeurs */
 
     productColumn.setAttribute("class", "col-12 col-lg-4")
+    productLink.setAttribute("href", "pages/products.html?id" + myData[i]._id)
     productContenant.setAttribute("class", "card mb-4 mt-4")    
     productImage.setAttribute("src", myData[i].imageUrl)
     productImage.setAttribute("class", "card-img-top ")
@@ -51,13 +54,27 @@ function displayData(myData) {
   }  
 }
 
+/* Fonction qui afficher les données de l'API sur la page produit */
+
+let idCameras = "";
+async function detailCameras() {
+  idCameras = location.search.substring(4);
+  const detailCameras = await getData();
+
+  
+}
+
 /* Fonction qui initialise */
+
 
 async function init() {
   let myData = await getData()
   console.log(myData)
   displayData(myData)
+  detailCameras()
 }
 
 init()
+
+
 

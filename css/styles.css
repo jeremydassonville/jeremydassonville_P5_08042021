@@ -29,3 +29,19 @@ p {
         
     }
 }
+
+/* Liens de la page */
+
+a {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+/* Footer */
+
+footer .fab, footer a{
+    color: white;
+}
