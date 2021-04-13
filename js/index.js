@@ -1,7 +1,7 @@
 /* Fonction qui récupère les données de l'API */
 
 function getData () {
-  return fetch('https://ab-p5-api.herokuapp.com/api/cameras' + idCameras)
+  return fetch('https://ab-p5-api.herokuapp.com/api/cameras')
     .then(function (response) {
       return response.json()
   })
@@ -54,15 +54,7 @@ function displayData(myData) {
   }  
 }
 
-/* Fonction qui afficher les données de l'API sur la page produit */
 
-let idCameras = "";
-async function detailCameras() {
-  idCameras = location.search.substring(4);
-  const detailCameras = await getData();
-
-  
-}
 
 /* Fonction qui initialise */
 
@@ -71,7 +63,6 @@ async function init() {
   let myData = await getData()
   console.log(myData)
   displayData(myData)
-  detailCameras()
 }
 
 init()
