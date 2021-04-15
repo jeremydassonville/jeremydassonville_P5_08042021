@@ -1,32 +1,23 @@
 /* Lien avec l'API */
 
-function getData () {
-    return fetch('https://ab-p5-api.herokuapp.com/api/cameras')
+const Product = {
+  getData: function getData (id) {
+    return fetch('https://ab-p5-api.herokuapp.com/api/cameras/' + id)
       .then(function (response) {
         return response.json()
     })
       .then(function (dataProduct){
         return dataProduct        
     })
-  }
+  },
 
-/* Fonction qui récupère l'ID dans l'URL de la page*/
+  getIdUrl: function getIdUrl () {
+    const urlSearchParams = new URLSearchParams(location.search);
+    const id = urlSearchParams.get('id');
+    return id;  
+  },
 
-function getIdUrl () {
-    let urlSearch = location.search.substring(3)
-    return urlSearch  
-}
-
-/* Fonction qui récupère la caméra correspondant à l'ID */
-
-function getCameraItem(myData, myId) {
-    let choosenCamera = myData.find(myData => myData['_id'] == myId);
-    return choosenCamera
-}
-
-/* Fonction qui affiche la caméra sur la page produit */
-
-function displayMyCamera(myCamera) {
+  displayMyCamera: function displayMyCamera(myCamera) {
 
     const displayProduct = document.getElementById('productDescription')
 
@@ -60,14 +51,15 @@ function displayMyCamera(myCamera) {
     productDescription.innerHTML = myCamera.description
     productPrice.setAttribute("class", "cart-text")
     productPrice.innerHTML = myCamera.price /100 + '€'
+  },
+
+  init: async function init () {
+    let myId = Product.getIdUrl()
+    let myData = await Product.getData(myId)
+    Product.displayMyCamera(myData)
+  },
+
 }
 
-async function init () {
-    let myData = await getData()
-    let myId = getIdUrl()
-    let myCamera = getCameraItem(myData, myId)
-    console.log(myCamera)
-    displayMyCamera (myCamera)
-}
 
-init();
+Product.init();

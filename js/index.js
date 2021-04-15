@@ -42,7 +42,7 @@ function displayData(myData) {
         /* Ajout des valeurs */
 
     productColumn.setAttribute("class", "col-12 col-lg-4")
-    productLink.setAttribute("href", "pages/products.html?id" + myData[i]._id)
+    productLink.setAttribute("href", "pages/products.html?id=" + myData[i]._id)
     productContenant.setAttribute("class", "card mb-4 mt-4")    
     productImage.setAttribute("src", myData[i].imageUrl)
     productImage.setAttribute("class", "card-img-top ")
