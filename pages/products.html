@@ -48,8 +48,30 @@
         </div>
     </header>
 
-    <main id="productDescription">
-        
+    <main>
+        <div class="card">
+            <img class="card-img-top mx-auto mt-4 w-50" alt="image de l'appareil photo" id="productImage">
+            <div class="card-body">
+                <h3 class="card-title" id="productName"></h3>
+                <p class="card-text" id="productDescription"></p>
+                <p class="card-text" id="productPrice"></p>
+                <form>
+                    <div class="form-row">
+                        <div class="col">
+                            <label for="exampleFormControlSelect1">lenses</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="exampleFormControlSelect1">Quantity</label>
+                            <input class="form-control" id="exampleFormControlSelect1" type="number" value="1" max="100">
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 
     <footer>
