@@ -1,5 +1,5 @@
 /* Page général */
-h2, h3 {
+h1,h2, h3 {
     font-family: 'New Tegomin', serif;
 }
 
@@ -44,4 +44,26 @@ a:link {
 
 footer .fab, footer a{
     color: white;
+}
+
+
+/********************************** Page panier **********************************/
+
+.panier__title{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.product__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Formulaire client */
+
+.form__product {
+    text-align: center;
 }

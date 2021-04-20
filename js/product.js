@@ -52,7 +52,11 @@ const Product = {
     addToShop.addEventListener("click", function(e) {
       e.preventDefault(); 
       const shopObject = {
+        name: myCamera.name,
+        img: myCamera.imageUrl,
+        description: myCamera.description,
         id: myCamera._id,
+        price: myCamera.price,
         lense: document.getElementById('lenses').value,
         quantity: document.getElementById('quantity').value, 
       }
