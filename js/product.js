@@ -50,7 +50,6 @@ const Product = {
   createShopObject: function createShopObject(myCamera) {
     const addToShop = document.getElementById('addToShop');
     addToShop.addEventListener("click", function(e) {
-      e.preventDefault(); 
       const shopObject = {
         name: myCamera.name,
         img: myCamera.imageUrl,
@@ -65,7 +64,12 @@ const Product = {
   },
 
   stockObject: function stockObject(shopObject) {
-    localStorage.setItem('nom',JSON.stringify(shopObject));
+    let currentCart = JSON.parse(localStorage.getItem('nom'))
+    if(!currentCart){
+      currentCart = [];
+    }
+    currentCart.push(shopObject);
+    localStorage.setItem('nom',JSON.stringify(currentCart));
     console.log(localStorage)
   },
 
