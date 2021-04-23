@@ -58,8 +58,15 @@ footer .fab, footer a{
 .product__container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin: 20px;
+}
+
+
+/* Bouton de suppression de l'article */
+
+#removeProduct {
+    cursor: pointer;
 }
 
 /* Formulaire client */

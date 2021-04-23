@@ -50,6 +50,7 @@ const Product = {
   createShopObject: function createShopObject(myCamera) {
     const addToShop = document.getElementById('addToShop');
     addToShop.addEventListener("click", function(e) {
+      event.preventDefault();
       const shopObject = {
         name: myCamera.name,
         img: myCamera.imageUrl,
