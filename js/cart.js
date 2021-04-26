@@ -1,16 +1,16 @@
 
 const Cart = {
     getShopProduct: function getShopProduct() {
-        const test = JSON.parse(localStorage.getItem('nom'));
+        const shop = JSON.parse(localStorage.getItem('nom'));
     
         const emptyShop = document.getElementById('panier');
         const displayProduct = document.getElementById('list__container');
     
-        if (test == null) {
+        if (shop == null) {
             emptyShop.innerHTML = "Votre panier est vide";
         } else {
     
-            for (i = 0; i < test.length; i++) {
+            for (i = 0; i < shop.length; i++) {
     
                 /* Ajout de la structure HTML */
     
@@ -29,31 +29,22 @@ const Cart = {
                 productContainer.appendChild(displayName);
                 productContainer.appendChild(displayPrice);
                 productContainer.appendChild(displayLense);
+                productContainer.appendChild(displayQuantity)
                 productContainer.appendChild(removeProduct);
     
-    
                 /* Ajout des valeurs */
+
                 productContainer.setAttribute("class", "product__container");
-                displayimg.setAttribute("src", test[i].img);
-                displayimg.setAttribute("class", "w-25");
-                displayName.innerHTML = test[i].name;
-                displayPrice.innerHTML = test[i].price / 100 + '€';
-                displayLense.innerHTML = test[i].lense;
-                displayQuantity.innerHTML = "x" + test[i].quantity;
+                displayimg.setAttribute("src", shop[i].img);
+                displayName.innerHTML = shop[i].name;
+                displayPrice.innerHTML = shop[i].price / 100 + '€';
+                displayLense.innerHTML = shop[i].lense;
+                displayQuantity.innerHTML = "x" + shop[i].quantity;
                 removeProduct.innerHTML = "X";
-                removeProduct.setAttribute("id", "removeProduct");            }
+                removeProduct.setAttribute("id", "removeProduct" + [i]);            
+            }
         }
-        return test;  
-    },
-
-    removeProduct: function removeProduct(shop){
-        const removeProduct = document.getElementById('removeProduct');
-        removeProduct.addEventListener("click", function() {
-            localStorage.removeItem();
-            document.location.reload();
-            console.log(shop)
-        })
-
+        return shop;
     },
 
     clearShop: function clearShop(shop){
@@ -64,10 +55,21 @@ const Cart = {
         })
     },
 
+    removeProduct: function removeProduct(i){
+        const removeProduct = document.getElementById("removeProduct1");
+        const shop = JSON.parse(localStorage.getItem('nom'));
+        removeProduct.addEventListener("click", function() {
+            shop.splice(i, 1);
+            localStorage.clear();
+            localStorage.setItem("nom",JSON.stringify(shop));
+            location.reload();
+        })  
+    },
+
     init: function init() {
         const shop = Cart.getShopProduct();
-        Cart.removeProduct(shop);
         Cart.clearShop(shop);
+        Cart.removeProduct(shop);
     },
     
     

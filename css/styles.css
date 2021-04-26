@@ -62,11 +62,26 @@ footer .fab, footer a{
     margin: 20px;
 }
 
+.product__container img {
+    width: 300px;
+}
+
 
 /* Bouton de suppression de l'article */
 
 #removeProduct {
     cursor: pointer;
+}
+
+/* Bouton pour vider le panier */
+
+#clearShop {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#clearShop:hover {
+    text-decoration: underline;
 }
 
 /* Formulaire client */

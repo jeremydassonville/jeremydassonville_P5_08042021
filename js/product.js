@@ -60,6 +60,8 @@ const Product = {
         lense: document.getElementById('lenses').value,
         quantity: document.getElementById('quantity').value, 
       }
+      alert("cet article a été ajouté au panier !");
+      location.reload();
     Product.stockObject(shopObject)
     })
   },
