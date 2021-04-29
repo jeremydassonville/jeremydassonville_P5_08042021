@@ -1,8 +1,15 @@
 /* Lien avec l'API */
 
 const Product = {
+
+  getIdUrl: function getIdUrl () {
+    const urlSearchParams = new URLSearchParams(location.search);
+    const id = urlSearchParams.get('id');
+    return id;  
+  },
+
   getData: function getData (id) {
-    return fetch('https://ab-p5-api.herokuapp.com/api/cameras/' + id)
+    return fetch('http://localhost:3000/api/cameras' + '/' + id)
       .then(function (response) {
         return response.json()
     })
@@ -11,11 +18,6 @@ const Product = {
     })
   },
 
-  getIdUrl: function getIdUrl () {
-    const urlSearchParams = new URLSearchParams(location.search);
-    const id = urlSearchParams.get('id');
-    return id;  
-  },
 
   displayMyCamera: function displayMyCamera(myCamera) {
 
@@ -76,7 +78,7 @@ const Product = {
     console.log(localStorage)
   },
 
-  init: async function init () {
+  init: async function init () {   
     const myId = Product.getIdUrl()
     const myData = await Product.getData(myId)
     Product.displayMyCamera(myData)

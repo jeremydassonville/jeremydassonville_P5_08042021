@@ -1,7 +1,7 @@
 /* Fonction qui récupère les données de l'API */
 
 function getData () {
-  return fetch('https://ab-p5-api.herokuapp.com/api/cameras')
+  return fetch('http://localhost:3000/api/cameras')
     .then(function (response) {
       return response.json()
   })
@@ -44,14 +44,14 @@ function displayData(myData) {
     productColumn.setAttribute("class", "col-12 col-lg-4")
     productLink.setAttribute("href", "pages/products.html?id=" + myData[i]._id)
     productContenant.setAttribute("class", "card mb-4 mt-4")    
-    productImage.setAttribute("src", myData[i].imageUrl)
+    productImage.setAttribute("src", myData[i].imageUrl )
     productImage.setAttribute("class", "card-img-top ")
     productBody.setAttribute("class", "card-body")
     productName.setAttribute("class", "card-title")
     productName.innerHTML += myData[i].name
     productPrice.setAttribute("class", "card-text")
     productPrice.innerHTML += myData[i].price / 100 + '€'
-  }  
+  }
 }
 
 
