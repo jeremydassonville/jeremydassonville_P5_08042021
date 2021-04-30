@@ -104,16 +104,19 @@ const Cart = {
     },
 
     onOrder: function onOrder(shop){
+        alert('click OK');
         const contact = Cart.checkForm();
         Cart.sendForm(contact, shop);
+        
     },
 
     init:function init() {
         const shop = Cart.getShopProduct();
+        Cart.removeProduct();
+        Cart.clearShop();
         const confirmPurchase = document.getElementById('confirmPurchase');
         confirmPurchase.addEventListener("click", function(e) {
             e.preventDefault();
-            alert('click OK');
             Cart.onOrder(shop);
         })
     },

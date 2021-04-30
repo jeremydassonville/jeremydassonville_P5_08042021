@@ -52,7 +52,7 @@ const Product = {
   createShopObject: function createShopObject(myCamera) {
     const addToShop = document.getElementById('addToShop');
     addToShop.addEventListener("click", function(e) {
-      event.preventDefault();
+      e.preventDefault();
       const shopObject = {
         name: myCamera.name,
         img: myCamera.imageUrl,
@@ -75,7 +75,17 @@ const Product = {
     }
     currentCart.push(shopObject);
     localStorage.setItem('nom',JSON.stringify(currentCart));
-    console.log(localStorage)
+  },
+
+  shopIndex: function shopIndext() {
+    const shop = localStorage.getItem('nom');
+    const shopIndex = JSON.parse(shop)
+    const displayIndex = document.getElementById('indexShop');
+    const i = document.createElement('p');
+    displayIndex.appendChild(i);
+
+    i.innerHTML = shopIndex.length
+    console.log(shopIndex)
   },
 
   init: async function init () {   
@@ -83,6 +93,7 @@ const Product = {
     const myData = await Product.getData(myId)
     Product.displayMyCamera(myData)
     const shopObject = await Product.createShopObject(myData)
+    Product.shopIndex();
   },
 }
 
