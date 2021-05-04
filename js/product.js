@@ -56,7 +56,6 @@ const Product = {
       const shopObject = {
         name: myCamera.name,
         img: myCamera.imageUrl,
-        description: myCamera.description,
         id: myCamera._id,
         price: myCamera.price,
         lense: document.getElementById('lenses').value,
@@ -83,10 +82,11 @@ const Product = {
     const displayIndex = document.getElementById('indexShop');
     const i = document.createElement('p');
     displayIndex.appendChild(i);
-
+  
     i.innerHTML = shopIndex.length
     console.log(shopIndex)
   },
+  
 
   init: async function init () {   
     const myId = Product.getIdUrl()

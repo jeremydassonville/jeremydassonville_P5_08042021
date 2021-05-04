@@ -17,6 +17,14 @@ p {
     font-size: 20px;
 }
 
+#indexShop {
+    display: flex;
+}
+#indexShop p {
+    margin-left: 4px;
+    font-size: 15px;
+}
+
 /* Titre de la section cards */
 
 .box-title h2 {

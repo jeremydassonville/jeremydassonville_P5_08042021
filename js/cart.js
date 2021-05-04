@@ -87,6 +87,13 @@ const Cart = {
             return contact;
     },
 
+    
+    onOrder: function onOrder(shop){
+        const contact = Cart.checkForm();
+        Cart.sendForm(contact, shop);
+        
+    },
+
     sendForm: function sendForm(contact, products) {
         let commande = {
             contact,
@@ -98,16 +105,12 @@ const Cart = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(commande)
+        }).then(function(response) {
+            return response.json()
+        }).then(function(data) {
+            sessionStorage.setItem('order', JSON.stringify(data));
         })
-        console.log(commande)
-
-    },
-
-    onOrder: function onOrder(shop){
-        alert('click OK');
-        const contact = Cart.checkForm();
-        Cart.sendForm(contact, shop);
-        
+       document.location.href='commande.html'
     },
 
     init:function init() {

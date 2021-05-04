@@ -54,6 +54,16 @@ function displayData(myData) {
   }
 }
 
+function shopIndext() {
+  const shop = localStorage.getItem('nom');
+  const shopIndex = JSON.parse(shop)
+  const displayIndex = document.getElementById('indexShop');
+  const i = document.createElement('p');
+  displayIndex.appendChild(i);
+
+  i.innerHTML = shopIndex.length
+  console.log(shopIndex)
+}
 
 
 /* Fonction qui initialise */
@@ -63,6 +73,7 @@ async function init() {
   let myData = await getData()
   console.log(myData)
   displayData(myData)
+  shopIndext()
 }
 
 init()
