@@ -81,6 +81,12 @@ footer .fab, footer a{
 
 /* Bouton de suppression de l'article */
 
+#totalShop {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
 #removeProduct {
     cursor: pointer;
 }

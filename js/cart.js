@@ -66,6 +66,27 @@ const Cart = {
         })  
     },
 
+    totalShop: function totalShop(shop){
+
+        let total = 0;
+
+        for (i = 0; i < shop.length; i++){
+            total += shop[i].price / 100;
+        }   
+        return total;     
+    },
+
+    displayTotalShop: function displayTotalShop(total) {
+        console.log(total)
+
+        let targetTotal = document.getElementById('totalShop');
+        const displayTotal = document.createElement('p');
+
+            targetTotal.appendChild(displayTotal);  
+
+            displayTotal.innerHTML = 'Total commande : ' + total + ' €';
+    },
+
     /* -----------------FORMULAIRE---------------- */
 
     checkForm: function checkForm() {
@@ -88,13 +109,13 @@ const Cart = {
     },
 
     
-    onOrder: function onOrder(shop){
+    onOrder: function onOrder(shop, total){
         const contact = Cart.checkForm();
-        Cart.sendForm(contact, shop);
+        Cart.sendForm(contact, shop, total);
         
     },
 
-    sendForm: function sendForm(contact, products) {
+    sendForm: function sendForm(contact, products, total) {
         let commande = {
             contact,
             products: products.map(function(product) {
@@ -108,20 +129,25 @@ const Cart = {
         }).then(function(response) {
             return response.json()
         }).then(function(data) {
-            sessionStorage.setItem('order', JSON.stringify(data));
+            let id = data.orderId;
+            let name = data.contact.firstName;
+            document.location.href='commande.html?id=' + id + '&name=' + name + '&total=' + total;
         })
-       document.location.href='commande.html'
+        
     },
 
     init:function init() {
         const shop = Cart.getShopProduct();
         Cart.removeProduct();
         Cart.clearShop();
+        const total = Cart.totalShop(shop);
+        Cart.displayTotalShop(total);
         const confirmPurchase = document.getElementById('confirmPurchase');
         confirmPurchase.addEventListener("click", function(e) {
             e.preventDefault();
-            Cart.onOrder(shop);
+            Cart.onOrder(shop, total);
         })
+        console.log(shop)
     },
 
 }
