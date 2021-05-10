@@ -1,0 +1,80 @@
+
+/****************************** Page commande  *******************************/
+h1,h2, h3 {
+    font-family: 'New Tegomin', serif;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif; ;
+}
+
+
+body, html{
+    height:100%;
+}
+body{
+   text-align:center;
+}
+   
+#main{
+   min-height:100%;
+   margin:0 auto;
+   position:relative;
+}
+   
+footer{
+   position:absolute;
+   bottom:0;
+   width:100%;
+   padding-top:20px;
+   height:50px;
+}
+
+/* menu de navigation */
+
+.nav-bg {
+    background-color: #F2E8F0;
+}
+
+.fa-shopping-bag{
+    font-size: 20px;
+}
+
+#indexShop {
+    display: flex;
+}
+#indexShop p {
+    margin-left: 4px;
+    font-size: 15px;
+}
+
+/* Footer */
+
+footer .fab, footer a{
+    color: white;
+}
+
+
+.main__commande {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.img__commande {
+    width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    .main__commande{
+        flex-direction: column;
+        align-items: center;
+    }
+    #displayOrder{
+        margin: 0 10px;
+    }
+
+    .img__commande{
+        width: 100%;
+    }
+}

@@ -7,6 +7,9 @@ p {
     font-family: 'Montserrat', sans-serif; ;
 }
 
+
+
+
 /* menu de navigation */
 
 .nav-bg {
@@ -30,6 +33,12 @@ p {
 .carousel-item img{
     height: 700px;
     object-fit: cover;
+}
+
+@media screen and (max-width: 1200px) {
+    .carousel-item img {
+        height: auto;
+    }
 }
 
 /* Titre de la section cards */
@@ -65,6 +74,27 @@ footer .fab, footer a{
     color: white;
 }
 
+/********************************** Page Produit **********************************/
+
+.card-body {
+    margin-top: 50px;
+}
+
+#productImage {
+        width: 50%;
+        min-width: 300px;
+    }
+
+@media screen and (max-width: 950px) {
+
+    .footer__product {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+}
+ 
+
 
 /********************************** Page panier **********************************/
 
@@ -85,6 +115,17 @@ footer .fab, footer a{
     width: 300px;
 }
 
+@media screen and (max-width: 1000px) {
+    .product__container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product__container img {
+        max-width: 600px;
+        width: 100%;
+    }
+}
 
 /* Bouton de suppression de l'article */
 
@@ -114,3 +155,4 @@ footer .fab, footer a{
 .form__product {
     text-align: center;
 }
+
