@@ -41,9 +41,12 @@ const Cart = {
                 displayLense.innerHTML = shop[i].lense;
                 displayQuantity.innerHTML = "x" + shop[i].quantity;
                 removeProduct.innerHTML = "X";
-                removeProduct.setAttribute("id", "removeProduct" + [i]);            
+                removeProduct.setAttribute("id", "removeProduct" + [i]);
+                
+                Cart.removeProduct(i);
             }
         }
+        
         return shop;
     },
 
@@ -56,13 +59,14 @@ const Cart = {
     },
 
     removeProduct: function removeProduct(i){
-        const removeProduct = document.getElementById("removeProduct0");
         const shop = JSON.parse(localStorage.getItem('nom'));
-        removeProduct.addEventListener("click", function() {
-            shop.splice(i, 1);
-            localStorage.clear();
-            localStorage.setItem("nom",JSON.stringify(shop));
-            location.reload();
+        const removeProduct = document.getElementById("removeProduct" + i);
+        console.log(removeProduct);
+            removeProduct.addEventListener("click", function() {
+                shop.splice( i , 1);
+                localStorage.clear();
+                localStorage.setItem("nom",JSON.stringify(shop));
+                location.reload();
         })  
     },
 
@@ -138,8 +142,7 @@ const Cart = {
 
     init:function init() {
         const shop = Cart.getShopProduct();
-        Cart.removeProduct();
-        Cart.clearShop();
+        Cart.clearShop(shop);
         const total = Cart.totalShop(shop);
         Cart.displayTotalShop(total);
         const confirmPurchase = document.getElementById('confirmPurchase');

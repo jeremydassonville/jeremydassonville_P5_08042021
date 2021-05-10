@@ -1,4 +1,4 @@
-/* Page général */
+/********************** Page général *************************************/
 h1,h2, h3 {
     font-family: 'New Tegomin', serif;
 }
@@ -23,6 +23,13 @@ p {
 #indexShop p {
     margin-left: 4px;
     font-size: 15px;
+}
+
+/* Caroussel de la page d'acceuil */
+
+.carousel-item img{
+    height: 700px;
+    object-fit: cover;
 }
 
 /* Titre de la section cards */
