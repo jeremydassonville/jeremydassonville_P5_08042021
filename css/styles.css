@@ -98,6 +98,11 @@ footer .fab, footer a{
 
 /********************************** Page panier **********************************/
 
+
+.form__product {
+    margin: 0 25px;
+}
+
 .panier__title{
     margin-top: 100px;
     margin-bottom: 100px;
@@ -150,9 +155,5 @@ footer .fab, footer a{
     text-decoration: underline;
 }
 
-/* Formulaire client */
 
-.form__product {
-    text-align: center;
-}
 

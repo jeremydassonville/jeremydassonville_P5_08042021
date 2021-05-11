@@ -4,6 +4,7 @@ const Cart = {
         const shop = JSON.parse(localStorage.getItem('nom'));
     
         const emptyShop = document.getElementById('panier');
+
         const displayProduct = document.getElementById('list__container');
     
         if (shop == null) {
@@ -61,7 +62,6 @@ const Cart = {
     removeProduct: function removeProduct(i){
         const shop = JSON.parse(localStorage.getItem('nom'));
         const removeProduct = document.getElementById("removeProduct" + i);
-        console.log(removeProduct);
             removeProduct.addEventListener("click", function() {
                 shop.splice( i , 1);
                 localStorage.clear();
@@ -81,7 +81,6 @@ const Cart = {
     },
 
     displayTotalShop: function displayTotalShop(total) {
-        console.log(total)
 
         let targetTotal = document.getElementById('totalShop');
         const displayTotal = document.createElement('p');
@@ -93,15 +92,86 @@ const Cart = {
 
     /* -----------------FORMULAIRE---------------- */
 
-    checkForm: function checkForm() {
+    checkForm: function checkForm(shop, total) {
+
+        let checkForm = document.getElementById('form');
+
+        checkForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let errorForm = '0';
+
+            /* Regex pour la vérification */
+            const checkLetter = /[a-zA-Z-\s]/;
+            const checkNumber = /[0-9]/;
+            const checkMail = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
+
+            /* Erreur à afficher */
+            let errorFirstName = document.getElementById('errorFirstName');
+            let errorLastName= document.getElementById('errorLastName');
+            let errorAdress = document.getElementById('errorAdress');
+            let errorCity = document.getElementById('errorCity');
+            let errorMail = document.getElementById('errorMail');
+
+            /* Vérification du prénom */
+            let checkFirstName = document.getElementById('prénom');
+            if (checkFirstName.value == "" || checkLetter.test(checkFirstName.value) == false){
+                errorFirstName.innerHTML = "le champ remplit n'est pas valide";
+                errorFirstName.style.color = 'red';
+                errorForm = '1';
+            }
+
+            /* Vérification du nom */
+            let checkLastName = document.getElementById('nom');
+            if (checkLastName.value == "" || checkLetter.test(checkLastName.value) == false){
+                errorLastName.innerHTML = "le champ remplit n'est pas valide";
+                errorLastName.style.color = 'red';
+                errorForm = '1';
+            }
+
+            /* Vérification de l'adresse */
+            let checkAdress = document.getElementById('adresse');
+            if (checkAdress.value == "" || checkLetter.test(checkAdress.value) == false || checkNumber.test(checkAdress.value) == false){
+                errorAdress.innerHTML = "le champ remplit n'est pas valide";
+                errorAdress.style.color = 'red';
+                errorForm = '1';
+            }
+
+            /* Vérifiaction de la Ville */
+            let checkCity = document.getElementById('ville');
+            if (checkCity.value == "" || checkLetter.test(checkCity.value) == false){
+                errorCity.innerHTML = "le champ remplit n'est pas valide";
+                errorCity.style.color = 'red';
+                errorForm = '1';
+            }
+
+            /* Vérification de l'email */
+            let mailValue = document.getElementById('e-mail');
+            if (mailValue.value == "" || checkMail.test(mailValue.value) == false) {
+                errorMail.innerHTML = "le champ remplit n'est pas valide";
+                errorMail.style.color = 'red';
+                errorForm = '1';
+            }
+
+            if ( errorForm == "1" ){
+                
+                alert("le formulaire n'est pas valide ")
+
+            } else {
+                Cart.onOrder(shop, total);
+            }
+        })
+    },
+
+    createContact: function createContact() {
     
+    /* Création de l'object contact à envoyer au serveur */ 
+
         let prenom = document.getElementById("prénom").value;
         let nom = document.getElementById("nom").value;
         let adresse = document.getElementById("adresse").value;
         let ville = document.getElementById("ville").value;
         let email = document.getElementById("e-mail").value;
 
-       
         let contact = {
                 firstName: prenom,
                 lastName: nom,
@@ -114,9 +184,8 @@ const Cart = {
 
     
     onOrder: function onOrder(shop, total){
-        const contact = Cart.checkForm();
+        const contact = Cart.createContact();
         Cart.sendForm(contact, shop, total);
-        
     },
 
     sendForm: function sendForm(contact, products, total) {
@@ -145,12 +214,8 @@ const Cart = {
         Cart.clearShop(shop);
         const total = Cart.totalShop(shop);
         Cart.displayTotalShop(total);
-        const confirmPurchase = document.getElementById('confirmPurchase');
-        confirmPurchase.addEventListener("click", function(e) {
-            e.preventDefault();
-            Cart.onOrder(shop, total);
-        })
-        console.log(shop)
+        Cart.checkForm(shop, total);
+        
     },
 
 }

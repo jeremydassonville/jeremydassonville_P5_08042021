@@ -68,26 +68,36 @@
             </div>
         </section>
 
-        <form method="post" class="form__product">
+        <form method="post" class="form__product" id="form">
             <div class="form-group">
               <label for="prénom">Prénom</label>
-              <input type="text" class="form-control" id="prénom" placeholder="Your first name" value="Jérémy">
+              <input type="text" class="form-control" id="prénom" placeholder="Votre prénom">
+              <span id="errorFirstName">
+              </span>
             </div>
             <div class="form-group">
               <label for="nom">Nom</label>
-              <input type="text" class="form-control" id="nom" placeholder="Your last name" value="Jérémy">
+              <input type="text" class="form-control" id="nom" placeholder="Votre nom">
+              <span id="errorLastName">
+            </span>
             </div>
             <div class="form-group">
                 <label for="adresse">Adresse</label>
-                <input type="text" class="form-control" id="adresse" placeholder="Your adress" value="Jérémy">
+                <input type="text" class="form-control" id="adresse" placeholder="Votre adresse">
+                <span id="errorAdress">
+                </span>
               </div>
               <div class="form-group">
                 <label for="ville">Ville</label>
-                <input type="text" class="form-control" id="ville" placeholder="Your City" value="Jérémy">
+                <input type="text" class="form-control" id="ville" placeholder="Votre ville">
+                <span id="errorCity">
+                </span>
               </div>
               <div class="form-group">
                 <label for="E-mail">E-mail</label>
-                <input type="text" class="form-control" id="e-mail" placeholder="Your E-mail" value="Jérémy@gmail.com">
+                <input type="text" class="form-control" id="e-mail" placeholder="Votre e-mail">
+                <span id="errorMail">
+                </span>
               </div>
               <button type="submit" class="btn btn-primary mb-3" id="confirmPurchase">Valider la commande</button>
           </form>
