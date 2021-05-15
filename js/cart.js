@@ -2,12 +2,14 @@
 const Cart = {
     getShopProduct: function getShopProduct() {
         const shop = JSON.parse(localStorage.getItem('nom'));
-    
-        const emptyShop = document.getElementById('panier');
+        return shop;
+    },
 
+    displayShopProduct: function displayShopProduct(shop) {
+        const emptyShop = document.getElementById('panier');
         const displayProduct = document.getElementById('list__container');
     
-        if (shop == null) {
+        if (shop.length == 0) {
             emptyShop.innerHTML = "Votre panier est vide";
         } else {
     
@@ -43,24 +45,18 @@ const Cart = {
                 displayQuantity.innerHTML = "x" + shop[i].quantity;
                 removeProduct.innerHTML = "X";
                 removeProduct.setAttribute("id", "removeProduct" + [i]);
-                
-                Cart.removeProduct(i);
+
+                Cart.removeProduct(shop, i);
             }
         }
-        
-        return shop;
     },
 
     clearShop: function clearShop(){
-        const clearShop = document.getElementById('clearShop');
-        clearShop.addEventListener("click", function() {
-            localStorage.clear();
-            document.location.reload();
-        })
+        localStorage.clear();
+        document.location.reload();
     },
 
-    removeProduct: function removeProduct(i){
-        const shop = JSON.parse(localStorage.getItem('nom'));
+    removeProduct: function removeProduct(shop, i){
         const removeProduct = document.getElementById("removeProduct" + i);
             removeProduct.addEventListener("click", function() {
                 shop.splice( i , 1);
@@ -92,74 +88,72 @@ const Cart = {
 
     /* -----------------FORMULAIRE---------------- */
 
-    checkForm: function checkForm(shop, total) {
+    checkForm: function checkForm() {
 
-        let checkForm = document.getElementById('form');
+        let errorForm = '0';
 
-        checkForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            let errorForm = '0';
+        /* Regex pour la vérification */
+        const checkLetter = /[a-zA-Z-\s]/;
+        const checkNumber = /[0-9]/;
+        const checkMail = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
 
-            /* Regex pour la vérification */
-            const checkLetter = /[a-zA-Z-\s]/;
-            const checkNumber = /[0-9]/;
-            const checkMail = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
+        /* Erreur à afficher */
+        let errorFirstName = document.getElementById('errorFirstName');
+        let errorLastName= document.getElementById('errorLastName');
+        let errorAdress = document.getElementById('errorAdress');
+        let errorCity = document.getElementById('errorCity');
+        let errorMail = document.getElementById('errorMail');
 
-            /* Erreur à afficher */
-            let errorFirstName = document.getElementById('errorFirstName');
-            let errorLastName= document.getElementById('errorLastName');
-            let errorAdress = document.getElementById('errorAdress');
-            let errorCity = document.getElementById('errorCity');
-            let errorMail = document.getElementById('errorMail');
+        /* Vérification du prénom */
+        let checkFirstName = document.getElementById('prénom');
+        if (checkFirstName.value == "" || checkLetter.test(checkFirstName.value) == false){
+            errorFirstName.innerHTML = "le champ remplit n'est pas valide";
+            errorFirstName.style.color = 'red';
+            errorForm = '1';
+        } else {
+            errorFirstName.innerHTML = "";
+        }
 
-            /* Vérification du prénom */
-            let checkFirstName = document.getElementById('prénom');
-            if (checkFirstName.value == "" || checkLetter.test(checkFirstName.value) == false){
-                errorFirstName.innerHTML = "le champ remplit n'est pas valide";
-                errorFirstName.style.color = 'red';
-                errorForm = '1';
-            }
+        /* Vérification du nom */
+        let checkLastName = document.getElementById('nom');
+        if (checkLastName.value == "" || checkLetter.test(checkLastName.value) == false){
+            errorLastName.innerHTML = "le champ remplit n'est pas valide";
+            errorLastName.style.color = 'red';
+            errorForm = '1';
+        } else {
+            errorLastName.innerHTML = "";
+        }
 
-            /* Vérification du nom */
-            let checkLastName = document.getElementById('nom');
-            if (checkLastName.value == "" || checkLetter.test(checkLastName.value) == false){
-                errorLastName.innerHTML = "le champ remplit n'est pas valide";
-                errorLastName.style.color = 'red';
-                errorForm = '1';
-            }
+        /* Vérification de l'adresse */
+        let checkAdress = document.getElementById('adresse');
+        if (checkAdress.value == "" || checkLetter.test(checkAdress.value) == false || checkNumber.test(checkAdress.value) == false){
+            errorAdress.innerHTML = "le champ remplit n'est pas valide";
+            errorAdress.style.color = 'red';
+            errorForm = '1';
+        } else {
+            errorAdress.innerHTML = "";
+        }
 
-            /* Vérification de l'adresse */
-            let checkAdress = document.getElementById('adresse');
-            if (checkAdress.value == "" || checkLetter.test(checkAdress.value) == false || checkNumber.test(checkAdress.value) == false){
-                errorAdress.innerHTML = "le champ remplit n'est pas valide";
-                errorAdress.style.color = 'red';
-                errorForm = '1';
-            }
+        /* Vérifiaction de la Ville */
+        let checkCity = document.getElementById('ville');
+        if (checkCity.value == "" || checkLetter.test(checkCity.value) == false){
+            errorCity.innerHTML = "le champ remplit n'est pas valide";
+            errorCity.style.color = 'red';
+            errorForm = '1';
+        } else {
+            errorCity.innerHTML = "";
+        }
 
-            /* Vérifiaction de la Ville */
-            let checkCity = document.getElementById('ville');
-            if (checkCity.value == "" || checkLetter.test(checkCity.value) == false){
-                errorCity.innerHTML = "le champ remplit n'est pas valide";
-                errorCity.style.color = 'red';
-                errorForm = '1';
-            }
-
-            /* Vérification de l'email */
-            let mailValue = document.getElementById('e-mail');
-            if (mailValue.value == "" || checkMail.test(mailValue.value) == false) {
-                errorMail.innerHTML = "le champ remplit n'est pas valide";
-                errorMail.style.color = 'red';
-                errorForm = '1';
-            }
-
-            if ( errorForm == "1" ){
-                
-                alert("le formulaire n'est pas valide ")
-
-            } else {
-                Cart.onOrder(shop, total);
-            }
-        })
+        /* Vérification de l'email */
+        let mailValue = document.getElementById('e-mail');
+        if (mailValue.value == "" || checkMail.test(mailValue.value) == false) {
+            errorMail.innerHTML = "le champ remplit n'est pas valide";
+            errorMail.style.color = 'red';
+            errorForm = '1';
+        } else {
+            errorMail.innerHTML = "";
+        }
+        return errorForm;
     },
 
     createContact: function createContact() {
@@ -183,9 +177,13 @@ const Cart = {
     },
 
     
-    onOrder: function onOrder(shop, total){
-        const contact = Cart.createContact();
-        Cart.sendForm(contact, shop, total);
+    onOrder: async function onOrder(shop, total, resultForm){
+        if (resultForm == "1"){
+            alert("le formulaire n'est pas valide ");
+        } else {
+            const contact = Cart.createContact();
+            Cart.sendForm(contact, shop, total);
+        } 
     },
 
     sendForm: function sendForm(contact, products, total) {
@@ -211,11 +209,24 @@ const Cart = {
 
     init:function init() {
         const shop = Cart.getShopProduct();
-        Cart.clearShop();
+        Cart.displayShopProduct(shop);
+
+        /* Fonction qui vide le panier */
+        const clearShop = document.getElementById('clearShop');
+        clearShop.addEventListener("click", function() {
+            Cart.clearShop();
+        })
+
         const total = Cart.totalShop(shop);
         Cart.displayTotalShop(total);
-        Cart.checkForm(shop, total);
-        
+
+        /* Fonction qui vérifie les inputs du formulaire */
+        const checkForm = document.getElementById('form');
+        checkForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const resultForm = await Cart.checkForm();
+            Cart.onOrder(shop, total, resultForm);
+        })
     },
 
 }
