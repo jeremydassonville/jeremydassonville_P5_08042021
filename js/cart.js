@@ -51,7 +51,7 @@ const Cart = {
         return shop;
     },
 
-    clearShop: function clearShop(shop){
+    clearShop: function clearShop(){
         const clearShop = document.getElementById('clearShop');
         clearShop.addEventListener("click", function() {
             localStorage.clear();
@@ -75,7 +75,7 @@ const Cart = {
         let total = 0;
 
         for (i = 0; i < shop.length; i++){
-            total += shop[i].price / 100;
+            total += shop[i].price * shop[i].quantity / 100;
         }   
         return total;     
     },
@@ -211,7 +211,7 @@ const Cart = {
 
     init:function init() {
         const shop = Cart.getShopProduct();
-        Cart.clearShop(shop);
+        Cart.clearShop();
         const total = Cart.totalShop(shop);
         Cart.displayTotalShop(total);
         Cart.checkForm(shop, total);
