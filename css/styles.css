@@ -109,26 +109,48 @@ footer .fab, footer a{
     text-align: center;
 }
 
+.list__panier {
+    margin: 0 100px;
+}
+
 .product__container {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin: 20px;
+    margin-top: 40px;
+}
+
+.product__container p {
+    margin-right: 100px;
 }
 
 .product__container img {
-    width: 300px;
+    width: 200px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1150px) {
+    .list__panier{
+        margin: 0 10px;
+    }
+
+    #respTitle {
+        display: none;
+    }
+
     .product__container{
         flex-direction: column;
-        align-items: center;
+    }
+
+    .product__container p {
+        margin-top: 10px;
     }
 
     .product__container img {
-        max-width: 600px;
         width: 100%;
+    }
+
+    #totalShop {
+        margin-top: 20px;
     }
 }
 
@@ -142,6 +164,14 @@ footer .fab, footer a{
 
 #removeProduct {
     cursor: pointer;
+}
+
+.removeProduct {
+    cursor: pointer;
+    margin-left: 20px;
+}
+.removeProduct:hover {
+    text-decoration: underline;
 }
 
 /* Bouton pour vider le panier */

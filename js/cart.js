@@ -33,7 +33,7 @@ const Cart = {
                 productContainer.appendChild(displayPrice);
                 productContainer.appendChild(displayLense);
                 productContainer.appendChild(displayQuantity)
-                productContainer.appendChild(removeProduct);
+                displayProduct.appendChild(removeProduct);
     
                 /* Ajout des valeurs */
 
@@ -43,8 +43,9 @@ const Cart = {
                 displayPrice.innerHTML = shop[i].price / 100 + '€';
                 displayLense.innerHTML = shop[i].lense;
                 displayQuantity.innerHTML = "x" + shop[i].quantity;
-                removeProduct.innerHTML = "X";
+                removeProduct.innerHTML = "Retirer le produit";
                 removeProduct.setAttribute("id", "removeProduct" + [i]);
+                removeProduct.setAttribute("class", "removeProduct")
 
                 Cart.removeProduct(shop, i);
             }
