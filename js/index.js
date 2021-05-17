@@ -1,6 +1,7 @@
-/* Fonction qui récupère les données de l'API */
+const Index = {
+  /* Fonction qui récupère les données de l'API */
 
-function getData () {
+getData: function getData () {
   return fetch('http://localhost:3000/api/cameras')
     .then(function (response) {
       return response.json()
@@ -8,11 +9,11 @@ function getData () {
     .then(function (dataProduct){
       return dataProduct
   })
-}
+},
 
 /* Fonction qui affiche les données de l'API sur la page d'acceuil */
 
-function displayData(myData) {
+displayData: function displayData(myData) {
   let displayProduct = document.getElementById('listeProduit')
 
       /* Boucle qui traverse le tableau de données */
@@ -52,9 +53,9 @@ function displayData(myData) {
     productPrice.setAttribute("class", "card-text")
     productPrice.innerHTML += myData[i].price / 100 + '€'
   }
-}
+},
 
-function shopIndext() {
+shopIndext: function shopIndext() {
   const shop = localStorage.getItem('nom');
   const shopIndex = JSON.parse(shop)
   const displayIndex = document.getElementById('indexShop');
@@ -63,20 +64,24 @@ function shopIndext() {
 
   i.innerHTML = shopIndex.length
   console.log(shopIndex)
-}
+},
 
 
 /* Fonction qui initialise */
 
 
-async function init() {
-  let myData = await getData()
+init: async function init() {
+  let myData = await Index.getData()
   console.log(myData)
-  displayData(myData)
-  shopIndext()
+  Index.displayData(myData)
+  Index.shopIndext()
+},
+
+
 }
 
-init()
+
+Index.init()
 
 
 

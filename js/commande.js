@@ -1,4 +1,4 @@
-const order = {
+const Order = {
 
     displayCommand: function displayCommand(id, name, total){
         
@@ -38,13 +38,13 @@ const order = {
     },
     
     init: function init () {   
-        const id = order.getIdUrl(); 
-        const name = order.getNameUrl();
-        const total = order.getTotalUrl();
-        order.displayCommand(id, name, total);
+        const id = Order.getIdUrl(); 
+        const name = Order.getNameUrl();
+        const total = Order.getTotalUrl();
+        Order.displayCommand(id, name, total);
     },
 
 }
 
 
-order.init()
+Order.init()

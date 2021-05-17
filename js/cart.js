@@ -93,8 +93,8 @@ const Cart = {
         let errorForm = '0';
 
         /* Regex pour la vérification */
-        const checkLetter = /[a-zA-Z-\s]/;
-        const checkNumber = /[0-9]/;
+        const checkSpecialCharacter = /[§!@#$%^&*().?":{}|<>]/;
+        const checkNumber = /[0-9]+/;
         const checkMail = /^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$/;
 
         /* Erreur à afficher */
@@ -106,7 +106,7 @@ const Cart = {
 
         /* Vérification du prénom */
         let checkFirstName = document.getElementById('prénom');
-        if (checkFirstName.value == "" || checkLetter.test(checkFirstName.value) == false){
+        if (checkFirstName.value == "" || checkSpecialCharacter.test(checkFirstName.value) == true || checkNumber.test(checkFirstName.value) == true ){
             errorFirstName.innerHTML = "le champ remplit n'est pas valide";
             errorFirstName.style.color = 'red';
             errorForm = '1';
@@ -116,7 +116,7 @@ const Cart = {
 
         /* Vérification du nom */
         let checkLastName = document.getElementById('nom');
-        if (checkLastName.value == "" || checkLetter.test(checkLastName.value) == false){
+        if (checkLastName.value == "" || checkSpecialCharacter.test(checkLastName.value) == true || checkNumber.test(checkLastName.value) == true){
             errorLastName.innerHTML = "le champ remplit n'est pas valide";
             errorLastName.style.color = 'red';
             errorForm = '1';
@@ -126,7 +126,7 @@ const Cart = {
 
         /* Vérification de l'adresse */
         let checkAdress = document.getElementById('adresse');
-        if (checkAdress.value == "" || checkLetter.test(checkAdress.value) == false || checkNumber.test(checkAdress.value) == false){
+        if (checkAdress.value == "" || checkSpecialCharacter.test(checkAdress.value) == true){
             errorAdress.innerHTML = "le champ remplit n'est pas valide";
             errorAdress.style.color = 'red';
             errorForm = '1';
@@ -136,7 +136,7 @@ const Cart = {
 
         /* Vérifiaction de la Ville */
         let checkCity = document.getElementById('ville');
-        if (checkCity.value == "" || checkLetter.test(checkCity.value) == false){
+        if (checkCity.value == "" || checkSpecialCharacter.test(checkCity.value) == true || checkNumber.test(checkCity.value) == true){
             errorCity.innerHTML = "le champ remplit n'est pas valide";
             errorCity.style.color = 'red';
             errorForm = '1';
