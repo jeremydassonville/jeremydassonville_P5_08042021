@@ -1,4 +1,4 @@
-
+                                                            
 const Cart = {
     getShopProduct: function getShopProduct() {
         const shop = JSON.parse(localStorage.getItem('nom'));
@@ -9,7 +9,7 @@ const Cart = {
         const emptyShop = document.getElementById('panier');
         const displayProduct = document.getElementById('list__container');
     
-        if (shop.length == 0) {
+        if (shop == null) {
             emptyShop.innerHTML = "Votre panier est vide";
         } else {
     
@@ -157,35 +157,34 @@ const Cart = {
         return errorForm;
     },
 
-    createContact: function createContact() {
-    
-    /* Création de l'object contact à envoyer au serveur */ 
-
-        let prenom = document.getElementById("prénom").value;
-        let nom = document.getElementById("nom").value;
-        let adresse = document.getElementById("adresse").value;
-        let ville = document.getElementById("ville").value;
-        let email = document.getElementById("e-mail").value;
-
-        let contact = {
-                firstName: prenom,
-                lastName: nom,
-                address: adresse,
-                city: ville,
-                email: email,
-            };
-            return contact;
-    },
-
-    
     onOrder: async function onOrder(shop, total, resultForm){
         if (resultForm == "1"){
-            alert("le formulaire n'est pas valide ");
+            console.log("erreur formulaire")
         } else {
             const contact = Cart.createContact();
             Cart.sendForm(contact, shop, total);
         } 
     },
+
+    createContact: function createContact() {
+    
+        /* Création de l'object contact à envoyer au serveur */ 
+    
+            let prenom = document.getElementById("prénom").value;
+            let nom = document.getElementById("nom").value;
+            let adresse = document.getElementById("adresse").value;
+            let ville = document.getElementById("ville").value;
+            let email = document.getElementById("e-mail").value;
+    
+            let contact = {
+                    firstName: prenom,
+                    lastName: nom,
+                    address: adresse,
+                    city: ville,
+                    email: email,
+                };
+                return contact;
+        },
 
     sendForm: function sendForm(contact, products, total) {
         let commande = {

@@ -9,7 +9,7 @@ const Product = {
   },
 
   getData: function getData (id) {
-    return fetch('http://localhost:3000/api/cameras' + '/' + id)
+    return fetch('http://localhost:3000/api/cameras/' + id)
       .then(function (response) {
         return response.json()
     })
@@ -52,7 +52,6 @@ const Product = {
   createShopObject: function createShopObject(myCamera) {
     const addToShop = document.getElementById('addToShop');
     addToShop.addEventListener("click", function(e) {
-      e.preventDefault();
       const shopObject = {
         name: myCamera.name,
         img: myCamera.imageUrl,
@@ -60,9 +59,8 @@ const Product = {
         price: myCamera.price,
         lense: document.getElementById('lenses').value,
         quantity: document.getElementById('quantity').value, 
-      }
-      alert("cet article a été ajouté au panier !");
-      location.reload();
+      }  
+    location.reload();
     Product.stockObject(shopObject)
     })
   },
