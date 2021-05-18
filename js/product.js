@@ -74,7 +74,7 @@ const Product = {
     localStorage.setItem('nom',JSON.stringify(currentCart));
   },
 
-  shopIndex: function shopIndext() {
+  shopIndex: function shopIndex() {
     const shop = localStorage.getItem('nom');
     const shopIndex = JSON.parse(shop)
     const displayIndex = document.getElementById('indexShop');
@@ -90,7 +90,7 @@ const Product = {
     const myId = Product.getIdUrl()
     const myData = await Product.getData(myId)
     Product.displayMyCamera(myData)
-    const shopObject = await Product.createShopObject(myData)
+    Product.createShopObject(myData)
     Product.shopIndex();
   },
 }

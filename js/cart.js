@@ -159,7 +159,10 @@ const Cart = {
 
     onOrder: async function onOrder(shop, total, resultForm){
         if (resultForm == "1"){
-            console.log("erreur formulaire")
+            console.log("erreur formulaire");
+        } else if ( shop.length == 0 ) {
+            console.log("le panier est vide");
+            alert("votre panier est vide");
         } else {
             const contact = Cart.createContact();
             Cart.sendForm(contact, shop, total);
@@ -208,8 +211,10 @@ const Cart = {
     },
 
     init:function init() {
+        
         const shop = Cart.getShopProduct();
         Cart.displayShopProduct(shop);
+
 
         /* Fonction qui vide le panier */
         const clearShop = document.getElementById('clearShop');

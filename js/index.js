@@ -55,7 +55,7 @@ displayData: function displayData(myData) {
   }
 },
 
-shopIndext: function shopIndext() {
+shopIndext: function shopIndex() {
   const shop = localStorage.getItem('nom');
   const shopIndex = JSON.parse(shop)
   const displayIndex = document.getElementById('indexShop');
