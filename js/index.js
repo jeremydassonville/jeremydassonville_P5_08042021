@@ -55,7 +55,7 @@ displayData: function displayData(myData) {
   }
 },
 
-shopIndext: function shopIndex() {
+shopIndex: function shopIndex() {
   const shop = localStorage.getItem('nom');
   const shopIndex = JSON.parse(shop)
   const displayIndex = document.getElementById('indexShop');
@@ -72,9 +72,8 @@ shopIndext: function shopIndex() {
 
 init: async function init() {
   let myData = await Index.getData()
-  console.log(myData)
   Index.displayData(myData)
-  Index.shopIndext()
+  Index.shopIndex()
 },
 
 

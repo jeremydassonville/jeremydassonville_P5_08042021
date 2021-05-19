@@ -215,7 +215,6 @@ const Cart = {
         const shop = Cart.getShopProduct();
         Cart.displayShopProduct(shop);
 
-
         /* Fonction qui vide le panier */
         const clearShop = document.getElementById('clearShop');
         clearShop.addEventListener("click", function() {

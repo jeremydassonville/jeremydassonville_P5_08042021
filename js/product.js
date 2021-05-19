@@ -50,19 +50,17 @@ const Product = {
   },
 
   createShopObject: function createShopObject(myCamera) {
-    const addToShop = document.getElementById('addToShop');
-    addToShop.addEventListener("click", function(e) {
-      const shopObject = {
-        name: myCamera.name,
-        img: myCamera.imageUrl,
-        id: myCamera._id,
-        price: myCamera.price,
-        lense: document.getElementById('lenses').value,
-        quantity: document.getElementById('quantity').value, 
-      }  
+
+    const shopObject = {
+      name: myCamera.name,
+      img: myCamera.imageUrl,
+      id: myCamera._id,
+      price: myCamera.price,
+      lense: document.getElementById('lenses').value,
+      quantity: document.getElementById('quantity').value, 
+    }  
     location.reload();
     Product.stockObject(shopObject)
-    })
   },
 
   stockObject: function stockObject(shopObject) {
@@ -90,7 +88,12 @@ const Product = {
     const myId = Product.getIdUrl()
     const myData = await Product.getData(myId)
     Product.displayMyCamera(myData)
-    Product.createShopObject(myData)
+
+    const addToShop = document.getElementById('addToShop')
+    addToShop.addEventListener("click", function(e) {
+      Product.createShopObject(myData);
+    });
+
     Product.shopIndex();
   },
 }
