@@ -38,7 +38,6 @@ const Product = {
     productDescription2.innerHTML = myCamera.description
     productPrice3.innerHTML = myCamera.price /100 + '€'
 
-    console.log(productImage1)
     /* Gestion des lenses du Formulaire */
 
     for (i = 0; i < myCamera.lenses.length; i++) {
