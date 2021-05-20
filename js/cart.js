@@ -14,6 +14,7 @@ const Cart = {
         } else {
     
             for (i = 0; i < shop.length; i++) {
+                console.log(shop)
     
                 /* Ajout de la structure HTML */
     

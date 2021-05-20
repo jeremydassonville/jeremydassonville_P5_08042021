@@ -26,6 +26,7 @@ displayData: function displayData(myData) {
 
   for (i = 0; i < myData.length; i++) {
 
+    console.log(myData[i].imageUrl)
        /* Ajout de la structure HTML  */
        
     const productColumn = document.createElement('div')
