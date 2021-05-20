@@ -100,7 +100,7 @@ const Cart = {
 
         /* Erreur à afficher */
         let errorFirstName = document.getElementById('errorFirstName');
-        let errorLastName= document.getElementById('errorLastName');
+        let errorLastName = document.getElementById('errorLastName');
         let errorAdress = document.getElementById('errorAdress');
         let errorCity = document.getElementById('errorCity');
         let errorMail = document.getElementById('errorMail');
@@ -206,6 +206,9 @@ const Cart = {
             let id = data.orderId;
             let name = data.contact.firstName;
             document.location.href='commande.html?id=' + id + '&name=' + name + '&total=' + total;
+        })
+        .catch(function(){
+            alert("le site a rencontré une erreur, merci de réessayer ulterieurement.");
         })
         
     },

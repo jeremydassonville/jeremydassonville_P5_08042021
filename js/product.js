@@ -16,6 +16,9 @@ const Product = {
       .then(function (dataProduct){
         return dataProduct        
     })
+    .catch(function() {
+      alert('le site a rencontré une erreur, merci de réessayer ulterieurement.')
+    })
   },
 
 
@@ -89,6 +92,7 @@ const Product = {
     const myData = await Product.getData(myId)
     Product.displayMyCamera(myData)
 
+    /* Fonction qui au clique de l'utilisateurs va créer l'objet pour le localStorage */
     const addToShop = document.getElementById('addToShop')
     addToShop.addEventListener("click", function(e) {
       Product.createShopObject(myData);

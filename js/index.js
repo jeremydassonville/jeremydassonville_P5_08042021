@@ -9,6 +9,12 @@ getData: function getData () {
     .then(function (dataProduct){
       return dataProduct
   })
+  .catch(function() {
+    const erreur = document.getElementById('errorMessage');
+    const erreurMessage = document.createElement('h2');
+    erreur.appendChild(erreurMessage);
+    erreurMessage.innerHTML = "Le site a rencontré un problème, merci de réessayer ulterieurement.";
+  })
 },
 
 /* Fonction qui affiche les données de l'API sur la page d'acceuil */
