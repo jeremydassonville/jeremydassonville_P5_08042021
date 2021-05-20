@@ -21,6 +21,10 @@ main {
 
 /* menu de navigation */
 
+.navbar-brand {
+    width: 210px;
+}
+
 .nav-bg {
     background-color: #F2E8F0;
 }
@@ -92,17 +96,8 @@ footer .fab, footer a{
 #productImage {
         width: 50%;
         min-width: 300px;
-    }
-
-@media screen and (max-width: 950px) {
-
-    .footer__product {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-    }
 }
- 
+
 
 
 /********************************** Page panier **********************************/

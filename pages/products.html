@@ -26,10 +26,10 @@
             <div class="container">
                 <div class="row">
                     <nav class="col navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="../index.html"><img src="../images/orinoco-logo.png" class="w-50"
+                        <a class="navbar-brand" href="/index.html"><img src="/images/orinoco-logo.png" class="w-50"
                                 alt="logo du site"></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div id="navbarContent" class="collapse navbar-collapse">
@@ -55,9 +55,9 @@
         <div class="card">
             <img class="card-img-top mx-auto mt-4 " alt="image de l'appareil photo" id="productImage">
             <div class="card-body">
-                <h3 class="card-title" id="productName"></h3>
-                <p class="card-text" id="productDescription"></p>
-                <p class="card-text" id="productPrice"></p>
+                <h3 class="card-title" id="productName">Nom du produit</h3>
+                <p class="card-text" id="productDescription">Description du produit</p>
+                <p class="card-text" id="productPrice">Prix du produit</p>
                 <form>
                     <div class="form-row">
                         <div class="col">
@@ -68,12 +68,11 @@
                         <div class="col">
                             <label for="quantity">Quantité</label>
                             <input class="form-control" id="quantity" type="number" value="1" max="100">
-                            </select>
                         </div>
                     </div>
                     <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalProduct" >Ajouter au panier</button>
                 </form>
-                <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
