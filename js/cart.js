@@ -71,11 +71,15 @@ const Cart = {
     totalShop: function totalShop(shop){
 
         let total = 0;
-
-        for (i = 0; i < shop.length; i++){
-            total += shop[i].price * shop[i].quantity / 100;
-        }   
-        return total;     
+        
+        if (shop == null){
+            return;
+        } else {
+            for (i = 0; i < shop.length; i++){
+                total += shop[i].price * shop[i].quantity / 100;
+            }   
+        return total;
+        }     
     },
 
     displayTotalShop: function displayTotalShop(total) {
@@ -161,7 +165,7 @@ const Cart = {
     onOrder: async function onOrder(shop, total, resultForm){
         if (resultForm == "1"){
             console.log("erreur formulaire");
-        } else if ( shop.length == 0 ) {
+        } else if ( shop == null ) {
             console.log("le panier est vide");
             alert("votre panier est vide");
         } else {

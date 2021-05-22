@@ -89,16 +89,18 @@ footer .fab, footer a{
 
 /********************************** Page Produit **********************************/
 
+.card {
+    margin-top: 80px;
+}
+
 .card-body {
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 #productImage {
         width: 50%;
         min-width: 300px;
 }
-
-
 
 /********************************** Page panier **********************************/
 
