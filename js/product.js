@@ -1,12 +1,14 @@
-/* Lien avec l'API */
-
 const Product = {
+
+  /* Fonction qui récupère l'id du produit dans l'url de la page  */
 
   getIdUrl: function getIdUrl () {
     const urlSearchParams = new URLSearchParams(location.search);
     const id = urlSearchParams.get('id');
     return id;  
   },
+
+  /* Fonction qui récupère les informations du produit avec l'api */
 
   getData: function getData (id) {
     return fetch('http://localhost:3000/api/cameras/' + id)
@@ -21,6 +23,8 @@ const Product = {
     })
   },
 
+
+  /* Fonction qui affiche les informations du produit sur la page product.html */
 
   displayMyCamera: function displayMyCamera(myCamera) {
 
@@ -52,6 +56,8 @@ const Product = {
     }
   },
 
+  /* Fonction qui créer l'objet pour le localStorage */
+
   createShopObject: function createShopObject(myCamera) {
 
     const shopObject = {
@@ -66,6 +72,8 @@ const Product = {
     Product.stockObject(shopObject)
   },
 
+  /* Fonction qui initialise le localStorage et qui "push" l'objet créer précédemment */
+
   stockObject: function stockObject(shopObject) {
     let currentCart = JSON.parse(localStorage.getItem('nom'))
     if(!currentCart){
@@ -75,6 +83,8 @@ const Product = {
     localStorage.setItem('nom',JSON.stringify(currentCart));
   },
 
+  /* Fonction qui affiche le nombre d'articles dans le panier */
+  
   shopIndex: function shopIndex() {
     const shop = localStorage.getItem('nom');
     const shopIndex = JSON.parse(shop)
@@ -82,8 +92,7 @@ const Product = {
     const i = document.createElement('p');
     displayIndex.appendChild(i);
   
-    i.innerHTML = shopIndex.length
-    console.log(shopIndex)
+    i.innerHTML = shopIndex.length;
   },
   
 

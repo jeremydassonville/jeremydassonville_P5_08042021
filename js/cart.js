@@ -1,9 +1,14 @@
                                                             
 const Cart = {
+
+    /* Fonction qui récupère le localStorage */
+    
     getShopProduct: function getShopProduct() {
         const shop = JSON.parse(localStorage.getItem('nom'));
         return shop;
     },
+
+    /* Fonction qui affiche le localStorage sur la page shop.html  */
 
     displayShopProduct: function displayShopProduct(shop) {
         const emptyShop = document.getElementById('panier');
@@ -53,10 +58,14 @@ const Cart = {
         }
     },
 
+    /* Fonction qui vide le localStorage */
+
     clearShop: function clearShop(){
         localStorage.clear();
         document.location.reload();
     },
+
+    /* fonction qui supprime un article du localStorage */
 
     removeProduct: function removeProduct(shop, i){
         const removeProduct = document.getElementById("removeProduct" + i);
@@ -68,10 +77,10 @@ const Cart = {
         })  
     },
 
-    totalShop: function totalShop(shop){
+    /* Fonction qui calcule le montant total des articles présents dans le localStorage */
 
+    totalShop: function totalShop(shop){
         let total = 0;
-        
         if (shop == null){
             return;
         } else {
@@ -81,6 +90,8 @@ const Cart = {
         return total;
         }     
     },
+
+    /* Fonction qui affiche le montant total des articles présents dans le localStorage sur la page shop.html */
 
     displayTotalShop: function displayTotalShop(total) {
 
@@ -93,6 +104,8 @@ const Cart = {
     },
 
     /* -----------------FORMULAIRE---------------- */
+
+    /* Fonction qui vérifie les informations saisies par l'utilisateur dans le formulaire */
 
     checkForm: function checkForm() {
 
@@ -162,6 +175,8 @@ const Cart = {
         return errorForm;
     },
 
+    /* Fonction qui valide ou non la commande  */
+
     onOrder: async function onOrder(shop, total, resultForm){
         if (resultForm == "1"){
             console.log("erreur formulaire");
@@ -173,6 +188,8 @@ const Cart = {
             Cart.sendForm(contact, shop, total);
         } 
     },
+
+    /* Fonction qui crée l'objet contact à envoyer au server */
 
     createContact: function createContact() {
     
@@ -194,6 +211,8 @@ const Cart = {
                 return contact;
         },
 
+    /* Fonction qui envoie la commande à l'API */
+    
     sendForm: function sendForm(contact, products, total) {
         let commande = {
             contact,

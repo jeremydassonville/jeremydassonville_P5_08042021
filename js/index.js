@@ -1,4 +1,5 @@
 const Index = {
+
   /* Fonction qui récupère les données de l'API */
 
 getData: function getData () {
@@ -7,6 +8,7 @@ getData: function getData () {
       return response.json()
   })
     .then(function (dataProduct){
+      console.log("connecté");
       return dataProduct
   })
   .catch(function() {
@@ -20,13 +22,15 @@ getData: function getData () {
 /* Fonction qui affiche les données de l'API sur la page d'acceuil */
 
 displayData: function displayData(myData) {
+
+  console.log(myData);
+
   let displayProduct = document.getElementById('listeProduit')
 
       /* Boucle qui traverse le tableau de données */
 
   for (i = 0; i < myData.length; i++) {
-
-    console.log(myData[i].imageUrl)
+    
        /* Ajout de la structure HTML  */
        
     const productColumn = document.createElement('div')
@@ -62,20 +66,18 @@ displayData: function displayData(myData) {
   }
 },
 
+/* Fonction qui affiche le nombre d'articles dans le panier */
+
 shopIndex: function shopIndex() {
   const shop = localStorage.getItem('nom');
   const shopIndex = JSON.parse(shop)
   const displayIndex = document.getElementById('indexShop');
   const i = document.createElement('p');
   displayIndex.appendChild(i);
-
-  i.innerHTML = shopIndex.length
-  console.log(shopIndex)
+  i.innerHTML = shopIndex.length;
 },
 
-
 /* Fonction qui initialise */
-
 
 init: async function init() {
   let myData = await Index.getData()

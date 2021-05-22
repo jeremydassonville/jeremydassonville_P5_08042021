@@ -1,5 +1,7 @@
 const Order = {
 
+    /* Fonction qui affiche les informations de la commande sur la page commande.html */
+
     displayCommand: function displayCommand(id, name, total){
         
 
@@ -19,17 +21,23 @@ const Order = {
 
     },
 
+    /* Fonction qui récupère l'Id de la commande dans l'Url de la page commande.html */
+
     getIdUrl: function getIdUrl () {
         const urlSearchParams = new URLSearchParams(location.search);
         const id = urlSearchParams.get('id');
         return id;
     },
 
+    /* Fonction qui récupère le nom de l'utilisateur de la commande dans l'Url de la page commande.html */
+
     getNameUrl: function getNameUrl() {
         const urlSearchParams = new URLSearchParams(location.search);
         const name = urlSearchParams.get('name');
         return name;
     },
+
+    /* Fonction qui récupère le montant total de la commande dans l'Url de la page commande.html */
 
     getTotalUrl: function getTotalUrl() {
         const urlSearchParams = new URLSearchParams(location.search);
