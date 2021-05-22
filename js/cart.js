@@ -131,6 +131,7 @@ const Cart = {
             errorForm = '1';
         } else {
             errorFirstName.innerHTML = "";
+            console.log('prénom validé');
         }
 
         /* Vérification du nom */
@@ -141,6 +142,7 @@ const Cart = {
             errorForm = '1';
         } else {
             errorLastName.innerHTML = "";
+            console.log('nom validé');
         }
 
         /* Vérification de l'adresse */
@@ -151,6 +153,7 @@ const Cart = {
             errorForm = '1';
         } else {
             errorAdress.innerHTML = "";
+            console.log('adresse validé');
         }
 
         /* Vérifiaction de la Ville */
@@ -161,6 +164,7 @@ const Cart = {
             errorForm = '1';
         } else {
             errorCity.innerHTML = "";
+            console.log('ville validé');
         }
 
         /* Vérification de l'email */
@@ -171,6 +175,7 @@ const Cart = {
             errorForm = '1';
         } else {
             errorMail.innerHTML = "";
+            console.log('e-mail validé');
         }
         return errorForm;
     },

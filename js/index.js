@@ -71,10 +71,15 @@ displayData: function displayData(myData) {
 shopIndex: function shopIndex() {
   const shop = localStorage.getItem('nom');
   const shopIndex = JSON.parse(shop)
-  const displayIndex = document.getElementById('indexShop');
-  const i = document.createElement('p');
-  displayIndex.appendChild(i);
-  i.innerHTML = shopIndex.length;
+  if (shop == null){
+    return;
+  } else {
+    const displayIndex = document.getElementById('indexShop');
+    const i = document.createElement('p');
+    displayIndex.appendChild(i);
+    i.innerHTML = shopIndex.length;
+  }
+  
 },
 
 /* Fonction qui initialise */
