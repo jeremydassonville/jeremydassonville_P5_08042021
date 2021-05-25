@@ -84,7 +84,7 @@ const Cart = {
         if (shop == null){
             return;
         } else {
-            for (i = 0; i < shop.length; i++){
+            for (let i = 0; i < shop.length; i++){
                 total += shop[i].price * shop[i].quantity / 100;
             }   
         Cart.displayTotalShop(total);
