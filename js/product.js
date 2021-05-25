@@ -44,7 +44,7 @@ const Product = {
 
     /* Gestion des lenses du Formulaire */
 
-    for (i = 0; i < myCamera.lenses.length; i++) {
+    for (let i = 0; i < myCamera.lenses.length; i++) {
       
       const displayLenses = document.getElementById('lenses')
       const productLenses = document.createElement('option')
@@ -75,7 +75,7 @@ const Product = {
   /* Fonction qui initialise le localStorage et qui "push" l'objet créer précédemment */
 
   stockObject: function stockObject(shopObject) {
-    let currentCart = JSON.parse(localStorage.getItem('nom'))
+    let currentCart = JSON.parse(localStorage.getItem('nom'));
     if(!currentCart){
       currentCart = [];
     }

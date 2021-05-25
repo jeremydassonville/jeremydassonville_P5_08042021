@@ -18,7 +18,7 @@ const Cart = {
             emptyShop.innerHTML = "Votre panier est vide";
         } else {
     
-            for (i = 0; i < shop.length; i++) {
+            for (let i = 0; i < shop.length; i++) {
                 console.log(shop)
     
                 /* Ajout de la structure HTML */
@@ -87,7 +87,7 @@ const Cart = {
             for (i = 0; i < shop.length; i++){
                 total += shop[i].price * shop[i].quantity / 100;
             }   
-        return total;
+        Cart.displayTotalShop(total);
         }     
     },
 
@@ -254,7 +254,6 @@ const Cart = {
         })
 
         const total = Cart.totalShop(shop);
-        Cart.displayTotalShop(total);
 
         /* Fonction qui vérifie les inputs du formulaire */
         const checkForm = document.getElementById('form');

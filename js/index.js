@@ -29,7 +29,7 @@ displayData: function displayData(myData) {
 
       /* Boucle qui traverse le tableau de données */
 
-  for (i = 0; i < myData.length; i++) {
+  for (let i = 0; i < myData.length; i++) {
     
        /* Ajout de la structure HTML  */
        
@@ -82,6 +82,7 @@ shopIndex: function shopIndex() {
   
 },
 
+
 /* Fonction qui initialise */
 
 init: async function init() {
@@ -92,7 +93,6 @@ init: async function init() {
 
 
 }
-
 
 Index.init()
 
