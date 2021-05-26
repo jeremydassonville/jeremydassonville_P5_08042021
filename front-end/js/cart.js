@@ -88,6 +88,7 @@ const Cart = {
                 total += shop[i].price * shop[i].quantity / 100;
             }   
         Cart.displayTotalShop(total);
+        return total;
         }     
     },
 
@@ -251,9 +252,10 @@ const Cart = {
         const clearShop = document.getElementById('clearShop');
         clearShop.addEventListener("click", function() {
             Cart.clearShop();
-        })
+        });
 
-        const total = Cart.totalShop(shop);
+        let total = Cart.totalShop(shop);
+        
 
         /* Fonction qui vérifie les inputs du formulaire */
         const checkForm = document.getElementById('form');
