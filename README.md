@@ -8,7 +8,7 @@ You will need to have Node and `npm` installed locally on your machine.
 
 ### Installation ###
 
-Clone this repo. From within the project folder, run `npm install`. You 
+Clone this repo. From within the project folder, run `npm install back-end/`. You 
 can then run the server with `node back-end/server`. 
 The server should run on `localhost` with default port `3000`. If the
 server runs on another port for any reason, this is printed to the
