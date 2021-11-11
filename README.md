@@ -1,5 +1,18 @@
 # Orinoco #
 
+### Présentation
+
+Cinquième projet du parcours développeur web chez OpenCLassrooms.
+
+L'objectif principal du projet est de développer le front-end du MVP d'une application de commerce en ligne.
+
+Aucune maquette n'est donnée, nous sommes donc libre sur le design de l'application.
+
+![homepage](https://github.com/jeremydassonville/jeremydassonville_P5_08042021/blob/main/front-end/images/homePage.png)
+![productList](https://github.com/jeremydassonville/jeremydassonville_P5_08042021/blob/main/front-end/images/homePageProducts.png)
+
+### Back-End
+
 This is the back end server for Project 5 of the Junior Web Developer path.
 
 ### Prerequisites ###
